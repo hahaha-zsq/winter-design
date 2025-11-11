@@ -18,7 +18,7 @@ public final class EnumUtils {
      * @return 与 {@code code} 对应的枚举实例
      * @throws IllegalArgumentException 当未找到匹配的枚举项时抛出
      */
-    public static <E extends Enum<E> & BaseEnum> E getByCode(Class<E> enumClass, int code) {
+    public static <E extends Enum<E> & BaseEnum> E getByCode(Class<E> enumClass, String code) {
         for (E e : enumClass.getEnumConstants()) {
             e.getCode();
         }

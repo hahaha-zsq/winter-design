@@ -140,7 +140,7 @@ public abstract class AbstractStrategyFactory<
      * @return 匹配的策略实现，若未注册则返回 {@code null}
      * @throws IllegalArgumentException 当 {@code code} 不属于该枚举类型时抛出
      */
-    public S getStrategy(int code, Class<T> enumClass) {
+    public S getStrategy(String code, Class<T> enumClass) {
         T type = EnumUtils.getByCode(enumClass, code);
         return strategyMap.get(type.getCode());
     }
