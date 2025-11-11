@@ -20,7 +20,9 @@ public final class EnumUtils {
      */
     public static <E extends Enum<E> & BaseEnum> E getByCode(Class<E> enumClass, String code) {
         for (E e : enumClass.getEnumConstants()) {
-            e.getCode();
+            if (e.getCode().equals(code)) {
+                return e;
+            }
         }
         throw new IllegalArgumentException("未知类型 code: " + code + " in " + enumClass.getSimpleName());
     }
