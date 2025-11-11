@@ -67,7 +67,7 @@ public abstract class AbstractStrategyFactory<
         T extends Enum<T> & BaseEnum,
         S extends BaseStrategy<T>> {
 
-    private final Map<Integer, S> strategyMap = new LinkedHashMap<>();
+    private final Map<String, S> strategyMap = new LinkedHashMap<>();
     private final Class<S> strategyClass;
 
     /**
@@ -103,7 +103,7 @@ public abstract class AbstractStrategyFactory<
     public void registerStrategy(S strategy) {
         Objects.requireNonNull(strategy, "strategy must not be null");
         T type = Objects.requireNonNull(strategy.getStrategyType(), "strategyType must not be null");
-        int code = type.getCode();
+        String code = type.getCode();
         S previous = strategyMap.putIfAbsent(code, strategy);
         if (previous != null) {
             throw new IllegalStateException("重复注册策略，code=" + code);
@@ -150,7 +150,7 @@ public abstract class AbstractStrategyFactory<
      *
      * @return {@code code -> strategy} 的不可变映射
      */
-    public Map<Integer, S> getAllStrategies() {
+    public Map<String, S> getAllStrategies() {
         return Collections.unmodifiableMap(strategyMap);
     }
 

@@ -46,7 +46,7 @@ public interface BaseEnum {
      * 返回唯一且稳定的数值标识，用于策略映射与持久化。
      * @return 唯一的数值标识 code
      */
-    int getCode();
+    String getCode();
 
     /**
      * 返回人类可读的描述文本，不应参与业务逻辑判断。
